@@ -8,18 +8,17 @@ interface ShoppingCartButtonProps {
   cart: ShoppingCart | null;
 }
 
-export default function ShoppingCartButton({cart}: ShoppingCartButtonProps) {
-  
-    function closeDropdown() {
-        const elem = document.activeElement as HTMLElement
-        if (elem) {
-            elem.blur();
-        }
+export default function ShoppingCartButton({ cart }: ShoppingCartButtonProps) {
+  function closeDropdown() {
+    const elem = document.activeElement as HTMLElement;
+    if (elem) {
+      elem.blur();
     }
+  }
 
-    return (
+  return (
     <div className="dropdown-end dropdown">
-      <label tabIndex={0} className="btn-ghost btn-circle btn">
+      <label tabIndex={0} className="btn-ghost btn btn-circle">
         <div className="indicator">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,24 +41,24 @@ export default function ShoppingCartButton({cart}: ShoppingCartButtonProps) {
       </label>
       <div
         tabIndex={0}
-        className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow z-30"
+        className="card dropdown-content card-compact z-30 mt-3 w-52 bg-base-100 shadow"
       >
         <div className="card-body">
-            <span className="text-lg font-bold">{cart?.size || 0} Items</span>
-            <span className="text-info">
-                Subtotal: {formatPrice(cart?.subtotal || 0)}
-            </span>
-            <div className="card-actions">
-                <Link
-                href="/cart"
-                className="btn btn-primary btn-block"
-                onClick={closeDropdown}
-                >
-                    View cart
-                </Link>
-            </div>
+          <span className="text-lg font-bold">{cart?.size || 0} Items</span>
+          <span className="text-info">
+            Subtotal: {formatPrice(cart?.subtotal || 0)}
+          </span>
+          <div className="card-actions">
+            <Link
+              href="/cart"
+              className="btn-primary btn btn-block"
+              onClick={closeDropdown}
+            >
+              View cart
+            </Link>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
   );
 }
